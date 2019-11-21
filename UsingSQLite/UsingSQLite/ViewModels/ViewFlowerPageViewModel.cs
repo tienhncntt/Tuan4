@@ -17,6 +17,8 @@ namespace UsingSQLite.ViewModels
         public ViewFlowerPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             Instance = this;
+            InsertCommand = new DelegateCommand(InsertCommandExecute);
+            UpdateCommand = new DelegateCommand(UpdateCommandExecute);
             ListFlowerType = new ObservableCollection<FlowerType>(App.Database.GetFlowerType());
         }
 
