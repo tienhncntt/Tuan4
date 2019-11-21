@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="UsingSQLite.Views.ViewFlowerTypePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="http://prismlibrary.com"
+    prism:ViewModelLocator.AutowireViewModel="True">
+    <StackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="7*" />
+            </Grid.ColumnDefinitions>
+
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="Tên Loại" />
+            <Entry
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="{Binding FlowerTypeName}" />
+            <Button
+                Grid.Row="1"
+                Grid.Column="0"
+                Command="{Binding InsertCommand}"
+                Text="Insert" />
+            <Button
+                Grid.Row="1"
+                Grid.Column="1"
+                Command="{Binding UpdateCommand}"
+                Text="Update" />
+        </Grid>
+
+        <ListView
+            ItemTapped="ListFlowerType_ItemTapped"
+            ItemsSource="{Binding ListFlowerType}"
+            SelectedItem="{Binding FlowerTypeSelected}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="{Binding FlowerTypeID}" TextColor="Pink" />
+                            <Label Text="{Binding FlowerTypeName}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
